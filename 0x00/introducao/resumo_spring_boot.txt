@@ -1,0 +1,21 @@
+O que é Spring Boot Framework?
+
+Spring framework é um framework de desenvolvimento de aplicações java que surgiu para simplificar a configuração de projetos de desenvolvimento
+Ele utiliza princípios do solid como inversão de controle e injeção de dependência, para possibilitar o desenvolvimento de aplicações altamente coesas e fracamente acopladas.
+Utiliza o conceito de beans que são objetos java gerenciados pelo container de controle. Permite a injeção de dependências automática através de recursos com anotações que aceleram o processo de desenvolvimento. Além disso, o framework spring possui diversos outros componentes que auxiliam em outras coisas como o spring security, spring batch, spring boot, spring cloud, spring web, spring MVC, spring api gateway, spring web flux, etc.
+
+Quais são os benefícios e recursos que Spring Boot fornece?
+
+O springboot oferece uma forma opinativa de construir aplicações, assumindo um conjunto de configurações padrão feitas para minimizar o esforço nesse aspecto e permitir que o desenvolvedo forque no que concerne às regras de negocio da aplicação. Possui anotações como @SpringBootAplication, que é composta por @EnableAutoConfiguration, @ConmponentScan e @Configuration.
+
+Como é feita a adição de novas dependências (JPA, Hibernate, etc…) ?
+
+O Spring boot permite a adição de novas dependências simplesmente incluindo elas no arquivo pom.xml. De modo que uma dependência adicionada já possui a referência para todas as  outras dependências de que ela precisa.
+
+Na sua opinião, qual é a melhor IDE para trabalhar com o Spring Boot: Spring Tools Suites, IntelliJ IDEA, Eclipse ou NetBeans ?
+
+Para mim, a melhor IDE é Itelij IDEA. Tem uma grande adoção do mercado e fornece uma interface intuitiva que permite o desenvolvimento ágil de aplicações
+
+O que é Spring Initializr?
+
+O Spring Initializr é um serviço que permite criar um pacote de aplicação springboot de forma simples através de uma interface web. Basta selecionar as configurações desejadas do projeto e fazer o download do pacote para o seu workspace.
