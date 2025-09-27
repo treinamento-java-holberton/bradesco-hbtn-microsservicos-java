@@ -20,12 +20,12 @@ public class Cliente {
     private String email;
 
     @JsonManagedReference
-    @OneToMany(targetEntity = Endereco.class, mappedBy = "cliente")
-    private List<Endereco> enderecos;
-
-    @JsonManagedReference
     @OneToMany(targetEntity = Telefone.class, mappedBy = "cliente")
     private List<Telefone> telefones;
+
+    @JsonManagedReference
+    @OneToMany(targetEntity = Endereco.class, mappedBy = "cliente")
+    private List<Endereco> enderecos;
 
     public String getEmail() {
         return email;
