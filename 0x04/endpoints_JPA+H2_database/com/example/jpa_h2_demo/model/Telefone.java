@@ -12,9 +12,9 @@ public class Telefone {
     @Id
     private Long id;
 
-    private Integer DDD;
+    private String DDD;
 
-    private Long numero;
+    private String numero;
 
     @ManyToOne
     @JoinColumn
@@ -30,11 +30,11 @@ public class Telefone {
         this.cliente = cliente;
     }
 
-    public Integer getDDD() {
+    public String getDDD() {
         return DDD;
     }
 
-    public void setDDD(Integer DDD) {
+    public void setDDD(String DDD) {
         this.DDD = DDD;
     }
 
@@ -46,11 +46,11 @@ public class Telefone {
         this.id = id;
     }
 
-    public Long getNumero() {
+    public String getNumero() {
         return numero;
     }
 
-    public void setNumero(Long numero) {
+    public void setNumero(String numero) {
         this.numero = numero;
     }
 }
