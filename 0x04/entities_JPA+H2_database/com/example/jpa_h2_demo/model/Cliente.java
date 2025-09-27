@@ -2,6 +2,7 @@ package com.example.jpa_h2_demo.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 
 import java.util.List;
@@ -19,9 +20,11 @@ public class Cliente {
     private String email;
 
     @OneToMany(targetEntity = Endereco.class, mappedBy = "cliente")
+    @JoinColumn
     private List<Endereco> enderecos;
 
     @OneToMany(targetEntity = Telefone.class, mappedBy = "cliente")
+    @JoinColumn
     private List<Telefone> telefones;
 
 }
