@@ -4,7 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 
-import java.util.Set;
+import java.util.List;
 
 @Entity
 public class Cliente {
@@ -19,9 +19,9 @@ public class Cliente {
     private String email;
 
     @OneToMany(targetEntity = Endereco.class, mappedBy = "cliente")
-    private Set<Endereco> enderecos;
+    private List<Endereco> enderecos;
 
     @OneToMany(targetEntity = Telefone.class, mappedBy = "cliente")
-    private Set<Telefone> telefones;
+    private List<Telefone> telefones;
 
 }
