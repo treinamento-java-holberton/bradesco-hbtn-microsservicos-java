@@ -16,11 +16,10 @@ public class UserController {
     public String findUserById(@PathVariable int id) {
 
         String msg = "You have entered valid ID";
-        String msgErro = "You have entered invalid ID";
        if (id > 0 && id <100) {
            return msg;
         } else {
-           throw new UserIdException(msgErro);
+           throw new UserIdException(String.valueOf(id));
         }
     }
 
@@ -28,24 +27,22 @@ public class UserController {
     public String findUserByName(@PathVariable String userName) {
 
         String msg = "You have entered valid USERNAME";
-        String msgErro = "You have entered invalid USERNAME";
         int len = userName.length();
         if (len > 0 && len < 15) {
             return msg;
         } else {
-            throw new UserNameException(msgErro);
+            throw new UserNameException(userName);
         }
     }
 
     @GetMapping("/user-cpf/{cpf}")
     public String findUserByCPF(@PathVariable String cpf) {
         String msg = "You have entered valid CPF";
-        String msgErro = "You have entered invalid CPF";
 
         if (isCPF(cpf)) {
             return msg;
         } else {
-            throw new CPFException(msgErro);
+            throw new CPFException(cpf);
         }
 
     }
