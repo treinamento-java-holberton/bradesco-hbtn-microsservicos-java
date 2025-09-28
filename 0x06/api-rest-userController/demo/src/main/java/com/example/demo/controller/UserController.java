@@ -1,3 +1,8 @@
+package com.example.demo.controller;
+
+import com.example.demo.exception.CPFException;
+import com.example.demo.exception.UserIdException;
+import com.example.demo.exception.UserNameException;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,7 +17,11 @@ public class UserController {
 
         String msg = "You have entered valid ID";
         String msgErro = "You have entered invalid ID";
-        return id > 0 && id <100? msg:msgErro;
+       if (id > 0 && id <100) {
+           return msg;
+        } else {
+           throw new UserIdException(msgErro);
+        }
     }
 
     @GetMapping("/user-name/{userName}")
@@ -21,7 +30,11 @@ public class UserController {
         String msg = "You have entered valid USERNAME";
         String msgErro = "You have entered invalid USERNAME";
         int len = userName.length();
-        return len > 0 && len < 15? msg: msgErro;
+        if (len > 0 && len < 15) {
+            return msg;
+        } else {
+            throw new UserNameException(msgErro);
+        }
     }
 
     @GetMapping("/user-cpf/{cpf}")
@@ -29,7 +42,11 @@ public class UserController {
         String msg = "You have entered valid CPF";
         String msgErro = "You have entered invalid CPF";
 
-        return isCPF(cpf)? msg: msgErro;
+        if (isCPF(cpf)) {
+            return msg;
+        } else {
+            throw new CPFException(msgErro);
+        }
 
     }
 
