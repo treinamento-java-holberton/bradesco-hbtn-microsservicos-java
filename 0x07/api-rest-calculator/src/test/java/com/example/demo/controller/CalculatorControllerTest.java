@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.test.context.bean.override.mockito.MockitoBean;
+import org.springframework.context.annotation.Import;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
@@ -16,13 +16,14 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 
 
 @ExtendWith(SpringExtension.class)
-@WebMvcTest
+@WebMvcTest(CalculatorController.class)
+@Import(Calculator.class)
 public class CalculatorControllerTest {
 
     @Autowired
     private MockMvc mvc;
 
-    @MockitoBean
+    @Autowired
     Calculator calculator;
 
     @Test
@@ -34,11 +35,57 @@ public class CalculatorControllerTest {
 
     @Test
     void addNumbers() throws Exception {
-        RequestBuilder request = get("/calculator/addNumbers?n1=1&n2=2");
+
+        RequestBuilder request = get("/calculator/addNumbers?number1=1&number2=2");
         MvcResult result = mvc.perform(request).andReturn();
-        assertEquals("3", result.getResponse().getContentAsString());
+        assertEquals("3.0", result.getResponse().getContentAsString());
     }
 
-    // TODO - Implementar os demais métodos: subNumbers, divideNumbers, factorial, 
-    //        calculeDayBetweenDate, integerToBinary e integerToHexadecimal
+    @Test
+    void subNumbers() throws Exception {
+
+        RequestBuilder request = get("/calculator/subNumbers?number1=2&number2=1");
+        MvcResult result = mvc.perform(request).andReturn();
+        assertEquals("1.0", result.getResponse().getContentAsString());
+    }
+
+    @Test
+    void divideNumbers() throws Exception {
+
+        RequestBuilder request = get("/calculator/divideNumbers?number1=2&number2=2");
+        MvcResult result = mvc.perform(request).andReturn();
+        assertEquals("1.0", result.getResponse().getContentAsString());
+    }
+
+    @Test
+    void factorial() throws Exception {
+
+        RequestBuilder request = get("/calculator/factorial?factorial=3");
+        MvcResult result = mvc.perform(request).andReturn();
+        assertEquals("6", result.getResponse().getContentAsString());
+    }
+
+    @Test
+    void calculeDayBetweenDate() throws Exception {
+        RequestBuilder request = get("/calculator/calculeDayBetweenDate?localDate1=2025-10-10&localDate2=2025-10-20");
+        MvcResult result = mvc.perform(request).andReturn();
+        assertEquals("10", result.getResponse().getContentAsString());
+    }
+
+
+    @Test
+    void integerToBinary() throws Exception {
+
+        RequestBuilder request = get("/calculator/integerToBinary?number1=2");
+        MvcResult result = mvc.perform(request).andReturn();
+        assertEquals("10", result.getResponse().getContentAsString());
+    }
+
+    @Test
+    void integerToHexadecimal() throws Exception {
+
+        RequestBuilder request = get("/calculator/integerToHexadecimal?number1=10");
+        MvcResult result = mvc.perform(request).andReturn();
+        assertEquals("a", result.getResponse().getContentAsString());
+    }
 }
