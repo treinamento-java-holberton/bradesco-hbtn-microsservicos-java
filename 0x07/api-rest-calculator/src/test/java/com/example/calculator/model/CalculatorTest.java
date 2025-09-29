@@ -1,4 +1,4 @@
-package com.example.demo.model;
+package com.example.calculator.model;
 
 import org.junit.jupiter.api.Test;
 
