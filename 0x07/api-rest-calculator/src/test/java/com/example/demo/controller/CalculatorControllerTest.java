@@ -1,6 +1,6 @@
-package com.example.controller;
+package com.example.demo.controller;
 
-import com.example.model.Calculator;
+import com.example.demo.model.Calculator;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +16,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 
 
 @ExtendWith(SpringExtension.class)
-@WebMvcTest(controllers = CalculatorController.class)
+@WebMvcTest
 public class CalculatorControllerTest {
 
     @Autowired

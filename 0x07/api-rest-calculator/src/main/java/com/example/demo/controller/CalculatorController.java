@@ -1,6 +1,6 @@
-package com.example.controller;
+package com.example.demo.controller;
 
-import com.example.model.Calculator;
+import com.example.demo.model.Calculator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.GetMapping;
