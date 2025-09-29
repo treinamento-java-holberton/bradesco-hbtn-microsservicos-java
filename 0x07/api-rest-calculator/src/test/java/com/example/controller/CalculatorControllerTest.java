@@ -1,7 +1,11 @@
+package com.example.controller;
+
+import com.example.model.Calculator;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
@@ -10,12 +14,16 @@ import org.springframework.test.web.servlet.RequestBuilder;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 
+
 @ExtendWith(SpringExtension.class)
-@WebMvcTest(CalculatorController.class)
+@WebMvcTest(controllers = CalculatorController.class)
 public class CalculatorControllerTest {
 
     @Autowired
     private MockMvc mvc;
+
+    @MockitoBean
+    Calculator calculator;
 
     @Test
     void messageWelcome() throws Exception {
@@ -26,7 +34,9 @@ public class CalculatorControllerTest {
 
     @Test
     void addNumbers() throws Exception {
-        // TODO
+        RequestBuilder request = get("/calculator/addNumbers?n1=1&n2=2");
+        MvcResult result = mvc.perform(request).andReturn();
+        assertEquals("3", result.getResponse().getContentAsString());
     }
 
     // TODO - Implementar os demais métodos: subNumbers, divideNumbers, factorial, 
